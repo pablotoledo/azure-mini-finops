@@ -15,6 +15,7 @@ downloads/
 eggs/
 .eggs/
 lib/
+!azure-resource-auditing/lib/
 lib64/
 parts/
 sdist/
@@ -205,3 +206,23 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Azure Resource Auditing
+azure-resource-auditing/output/reports/*
+!azure-resource-auditing/output/reports/.gitkeep
+*.json.tmp
+*.csv.tmp
+*-raw.json
+*-temp.csv
+audit-debug.log
+
+# Azure credentials and sensitive data
+.azure/
+*.pem
+*.key
+*.crt
+
+# Temporary files
+/tmp/
+temp/
+*.tmp
