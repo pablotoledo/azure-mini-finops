@@ -15,6 +15,7 @@ downloads/
 eggs/
 .eggs/
 lib/
+!azure-resource-auditing/lib/
 lib64/
 parts/
 sdist/
