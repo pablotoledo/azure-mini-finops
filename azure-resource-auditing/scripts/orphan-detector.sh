@@ -105,7 +105,7 @@ detect_orphaned_resources() {
     local temp_json="${OUTPUT_FILE%.csv}.json"
     
     if az graph query \
-        --query "$orphan_query" \
+        -q "$orphan_query" \
         --subscriptions "$SUBSCRIPTION_ID" \
         --output json > "$temp_json"; then
         
@@ -198,7 +198,7 @@ detect_empty_resource_groups() {
     local temp_json="${empty_rg_file%.csv}.json"
     
     if az graph query \
-        --query "$empty_rg_query" \
+        -q "$empty_rg_query" \
         --subscriptions "$SUBSCRIPTION_ID" \
         --output json > "$temp_json"; then
         
@@ -342,7 +342,7 @@ detect_orphaned_snapshots() {
     local temp_json="${snapshot_file%.csv}.json"
     
     if az graph query \
-        --query "$snapshot_query" \
+        -q "$snapshot_query" \
         --subscriptions "$SUBSCRIPTION_ID" \
         --output json > "$temp_json"; then
         

@@ -123,7 +123,7 @@ collect_inventory() {
     local temp_json="${OUTPUT_FILE%.csv}.json"
     
     if az graph query \
-        --query "$query" \
+        -q "$query" \
         --subscriptions "$SUBSCRIPTION_ID" \
         --output json > "$temp_json"; then
         

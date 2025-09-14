@@ -5,9 +5,11 @@ A comprehensive Azure resource auditing solution that provides enterprise-grade 
 ## 🚀 Features
 
 - **Complete Resource Inventory**: Comprehensive listing of all Azure resources with metadata
+- **Complete Resource Creation Analysis**: Tracks ALL resources (no time limits) with creator identification from tags and properties
 - **Cost Analysis**: Resource-level cost breakdown with optimization recommendations
 - **Orphaned Resource Detection**: Identifies unused resources for potential cleanup
-- **Activity Log Tracking**: Resource creator identification and change tracking
+- **Activity Log Tracking**: Resource creator identification and change tracking (last 30-90 days)
+- **Governance Recommendations**: Automated tagging compliance analysis and policy suggestions
 - **Safety-First Cleanup**: Automated cleanup recommendations with safety tagging
 - **Enterprise Ready**: Production-grade logging, error handling, and safety features
 
@@ -20,7 +22,8 @@ azure-resource-auditing/
 │   ├── inventory-collector.sh         # Resource inventory module
 │   ├── cost-analyzer.sh              # Cost analysis module
 │   ├── orphan-detector.sh            # Orphaned resource detection
-│   ├── activity-tracker.sh           # Activity log analysis
+│   ├── activity-tracker.sh           # Activity log analysis (last 30-90 days)
+│   ├── complete-resource-tracker.sh   # Complete resource analysis (ALL resources)
 │   └── cleanup-manager.sh            # Deletion recommendations & safety tagging
 ├── lib/
 │   ├── azure-helpers.sh              # Azure CLI utilities
@@ -30,6 +33,7 @@ azure-resource-auditing/
 ├── config/
 │   ├── audit-config.env              # Main configuration
 │   └── cost-thresholds.env           # Cost analysis settings
+├── validate-setup.sh                 # Setup validation script
 └── output/
     └── reports/                      # Generated CSV reports
 ```
@@ -73,6 +77,15 @@ az --version
 jq --version
 ```
 
+5. **Validate setup** (recommended):
+```bash
+# Navigate to the project directory
+cd azure-resource-auditing
+
+# Run the validation script to check everything is properly configured
+./validate-setup.sh
+```
+
 ## 📚 Documentation
 
 ### 📖 Complete User Manual
@@ -88,6 +101,26 @@ The user manual includes:
 - **FAQ**: Frequently asked questions and answers
 
 ## 🚦 Quick Start
+
+### Setup Validation
+
+Before running audits, validate your setup:
+
+```bash
+# Navigate to the project directory
+cd azure-resource-auditing
+
+# Run setup validation script
+./validate-setup.sh
+```
+
+This validation script checks:
+- ✅ Script execution permissions
+- ✅ Azure CLI authentication status
+- ✅ Resource Graph API access
+- ✅ Activity Log API access
+- ✅ Complete resource tracker functionality
+- ✅ Required directories and configuration files
 
 ### Basic Usage
 
@@ -143,6 +176,16 @@ The user manual includes:
 ./scripts/orphan-detector.sh \
     --subscription "your-subscription-id" \
     --output reports/orphans.csv
+
+# Complete resource analysis (ALL resources with creator info)
+./scripts/complete-resource-tracker.sh \
+    --subscription "your-subscription-id" \
+    --output reports/complete-resources.csv
+
+# Activity log analysis (recent resources only - last 30-90 days)
+./scripts/activity-tracker.sh \
+    --subscription "your-subscription-id" \
+    --output reports/activity.csv
 ```
 
 ## 📊 Output Reports
@@ -153,8 +196,17 @@ The auditing suite generates several CSV reports:
 - **`resource-inventory.csv`**: Complete resource listing with metadata
 - **`cost-analysis.csv`**: Resource-level cost data and trends
 - **`orphaned-resources.csv`**: Unused resources for cleanup
-- **`activity-summary.csv`**: Resource creator tracking
+- **`activity-summary.csv`**: Resource creator tracking (last 30-90 days)
+- **`complete-resources.csv`**: ALL resources with creator info (no time limits)
 - **`cleanup-recommendations.csv`**: Deletion recommendations with safety checks
+
+### Complete Resource Analysis Reports (NEW)
+- **`complete-resources.csv`**: All resources with creation time, creator, tags
+- **`complete-resources-analysis.txt`**: Detailed statistics and breakdowns
+- **`complete-resources-by-creator.csv`**: Resources grouped by creator
+- **`complete-resources-by-age.csv`**: Age distribution analysis
+- **`complete-resources-activity-enhanced.csv`**: Enhanced with Activity Log data
+- **`complete-resources-governance-recommendations.txt`**: Governance and compliance recommendations
 
 ### Detailed Reports
 - **`resource-inventory-vm-status.csv`**: Detailed VM information
@@ -271,6 +323,20 @@ export AZURE_TENANT_ID="your-tenant-id"
 > 📖 **For detailed authentication setup**: See [Authentication Methods](USER_MANUAL.md#authentication-methods) in the User Manual
 
 ## 🚨 Troubleshooting
+
+### Setup Validation
+
+First, run the validation script to identify common issues:
+
+```bash
+./validate-setup.sh
+```
+
+This will automatically check:
+- Script permissions and executability
+- Azure CLI authentication status
+- Resource Graph API access
+- Required directories and configuration files
 
 ### Common Issues
 

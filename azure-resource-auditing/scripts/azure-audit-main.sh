@@ -238,6 +238,17 @@ main() {
             log_info "DRY RUN: Would analyze activity logs"
         fi
     fi
+
+    # Complete resource analysis for ALL existing resources
+    log_info "Starting complete resource analysis..."
+    if [[ "$DRY_RUN" != "true" ]]; then
+        "${SCRIPT_DIR}/complete-resource-tracker.sh" \
+            --subscription "$SUBSCRIPTION_ID" \
+            --output "${base_filename}-complete-resources.csv" &
+        pids+=($!)
+    else
+        log_info "DRY RUN: Would analyze all resource creation data"
+    fi
     
     # Wait for parallel jobs to complete
     if [[ ${#pids[@]} -gt 0 ]]; then

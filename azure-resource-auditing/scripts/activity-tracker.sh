@@ -192,7 +192,7 @@ create_fallback_activity_data() {
     local temp_json="${fallback_file%.csv}.json"
     
     if az graph query \
-        --query "$creation_query" \
+        -q "$creation_query" \
         --subscriptions "$SUBSCRIPTION_ID" \
         --output json > "$temp_json"; then
         
