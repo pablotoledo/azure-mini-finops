@@ -169,7 +169,7 @@ get_all_resource_creation_info() {
         jq -r '
             ["SubscriptionName","SubscriptionId","ResourceGroup","ResourceName","ResourceType","Location","CreationTime","CreatedBy","Environment","Project","CostCenter","AgeInDays","AgeCategory","ResourceSize","ProvisioningState","PowerState","Tags"] as $headers |
             $headers,
-            (.[] | [
+            (.data[] | [
                 .SubscriptionName // "",
                 .SubscriptionId // "",
                 .ResourceGroup // "",
