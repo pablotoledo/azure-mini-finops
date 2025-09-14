@@ -73,6 +73,20 @@ az --version
 jq --version
 ```
 
+## 📚 Documentation
+
+### 📖 Complete User Manual
+For comprehensive documentation, installation guides, troubleshooting, and advanced usage scenarios, see our **[Complete User Manual](USER_MANUAL.md)**.
+
+The user manual includes:
+- **Detailed Installation Guide**: Step-by-step setup instructions
+- **Configuration Reference**: Complete parameter documentation
+- **Module-Specific Usage**: In-depth guide for each auditing module
+- **Advanced Workflows**: Multi-subscription auditing, automation scripts
+- **Troubleshooting Guide**: Common issues and solutions
+- **Best Practices**: Security, performance, and operational guidelines
+- **FAQ**: Frequently asked questions and answers
+
 ## 🚦 Quick Start
 
 ### Basic Usage
@@ -103,6 +117,8 @@ jq --version
     --subscription "your-subscription-id" \
     --dry-run
 ```
+
+> 💡 **Need more help?** Check the **[User Manual](USER_MANUAL.md)** for detailed instructions and advanced usage examples.
 
 ### Advanced Usage
 
@@ -252,6 +268,8 @@ export AZURE_TENANT_ID="your-tenant-id"
 
 3. **Managed Identity** (automatically detected in Azure VMs)
 
+> 📖 **For detailed authentication setup**: See [Authentication Methods](USER_MANUAL.md#authentication-methods) in the User Manual
+
 ## 🚨 Troubleshooting
 
 ### Common Issues
@@ -276,6 +294,8 @@ az login --scope https://management.azure.com//.default
 az extension add --name resource-graph
 az extension update --name resource-graph
 ```
+
+> 🔧 **For comprehensive troubleshooting**: See [Troubleshooting Guide](USER_MANUAL.md#troubleshooting) in the User Manual
 
 ### Debug Mode
 
@@ -376,13 +396,19 @@ The authors are not responsible for any data loss or service disruption resultin
 ## 📞 Support
 
 For issues, questions, or contributions:
-1. Check the troubleshooting section above
+1. **First**: Check the **[Complete User Manual](USER_MANUAL.md)** for detailed troubleshooting
 2. Review existing issues in the repository
 3. Create a new issue with detailed information including:
    - Error messages and logs
    - Azure CLI version (`az --version`)
    - Subscription type and size
    - Steps to reproduce the issue
+
+## 📚 Additional Resources
+
+- **[Complete User Manual](USER_MANUAL.md)** - Comprehensive documentation and guides
+- **[Configuration Reference](azure-resource-auditing/config/)** - Sample configuration files
+- **[Script Documentation](azure-resource-auditing/scripts/)** - Individual module documentation
 
 ---
 
